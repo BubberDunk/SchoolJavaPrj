@@ -62,12 +62,6 @@ public class DoorParty {
 			//CALL TRIVIA STUFF IN TRIVIA CLASS
 		}
 
-		else if (investigate.contains("help")){
-			System.out.println(HellStrings.HELP);
-			userInput = scnr.nextLine();
-			door3Interact(userInput);
-		}
-		
 		else if (investigate.contains("exit")) {
 			System.out.println("\nYou leave the room.\n");
 			FinalMain.doorIntro();

@@ -115,6 +115,9 @@ public class FinalMain {
 		else if (saveChoice.compareToIgnoreCase("restart") == 0) {
 			
 		}
+		else if(saveChoice.compareToIgnoreCase("help") == 0) {
+			System.out.println(HellStrings.HELP);
+		}
 		else {
 			return;
 		}
