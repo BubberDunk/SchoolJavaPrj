@@ -6,8 +6,9 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class FinalMain {
-
 	static Scanner scnr = new Scanner(System.in);
+	static User player1 = new User();
+	static User ghost = new User("opponent", 10, 0, 0, 0, 0);
 	
 
 	public static void main(String[] args) throws FileNotFoundException {
@@ -29,12 +30,12 @@ public class FinalMain {
 		else {
 			//this part is just the beginning of the game
 			userIntro(); //prompts for user name
+			System.out.print("Hello, " + player1.getUserName());
 			HellStrings.getGameIntro(); //introduces game
 			scnr.nextLine();
 			HellStrings.getJokes();
 			userInput = scnr.nextLine();
-			User.setUserCoins(10); 
-			Ghost.setGhostCoins(10);//initializing moneys
+			player1.setUserCoins(10); //initializing moneys
 			saveMenu(userInput);
 			System.out.println("Great! Now let's start the game.");
 			userInput = scnr.nextLine();
@@ -48,7 +49,7 @@ public class FinalMain {
         
         System.out.println("Enter your name.");
         String userName = scnr.nextLine();
-        User.setUserName(userName);
+        player1.setUserName(userName);
         return userName;
     }
 	
@@ -70,7 +71,7 @@ public class FinalMain {
 			//door1 trivia zone
 			}
 			else if (doorChar == '2') {
-			//door2 trivia zone
+				DoorParty.door2Intro();
 			}
 			else if (doorChar == '3')
 				try {
@@ -110,7 +111,7 @@ public class FinalMain {
 			saveGame();
 		}
 		else if (saveChoice.compareToIgnoreCase("inventory") == 0) {
-			User.getInventory();
+			player1.getInventory();
 		}
 		else if (saveChoice.compareToIgnoreCase("restart") == 0) {
 			
@@ -126,39 +127,55 @@ public class FinalMain {
 	public static void saveGame() throws FileNotFoundException
 	{
 		// File writing objects
-		String fileName = User.getUserName().toLowerCase();
+		String fileName = player1.getUserName().toLowerCase();
 		PrintWriter outputFile = new PrintWriter (fileName + ".txt");
 		
 		// Write User and Ghost Data to a file
-		outputFile.println(User.getUserName());
-		outputFile.println(User.getCoins());
-		outputFile.println(User.getEQ());
-		outputFile.println(User.getMam());
-		outputFile.println(User.getCat());
-		outputFile.println(Ghost.getGhostCoins());
-		outputFile.println(Ghost.getGhostEQ());
-		outputFile.println(Ghost.getGhostMam());
-		outputFile.println(Ghost.getGhostCat());
+		outputFile.println(player1.getUserName());
+		outputFile.println(player1.getCoins());
+		outputFile.println(player1.getEQ());
+		outputFile.println(player1.getMam());
+		outputFile.println(player1.getCat());
+		outputFile.println(player1.getGames());
+		outputFile.println(ghost.getCoins());
+		outputFile.println(ghost.getEQ());
+		outputFile.println(ghost.getMam());
+		outputFile.println(ghost.getCat());
+		outputFile.println(ghost.getGames());
 		
 		outputFile.close();
 	}
 	
+	//load previous save
 	public static void loadGame(String userName) throws FileNotFoundException {
 		File file = new File(userName.toLowerCase() + ".txt");
 		Scanner inputFile = new Scanner(file);
 		
 		while (inputFile.hasNext()) {
 			String name = inputFile.nextLine();
+			player1.setUserName(name);
 			int coins = inputFile.nextInt();
+			player1.setUserCoins(coins);
 			int equality = inputFile.nextInt();
+			player1.setUserEQ(equality);
 			int mammals = inputFile.nextInt();
+			player1.setUserMam(mammals);
 			int cats = inputFile.nextInt();
-			new User(name, coins, equality, mammals, cats);
-			int gCoins = inputFile.nextInt();
-			int gEquality = inputFile.nextInt();
-			int gMammals = inputFile.nextInt();
-			int gCats = inputFile.nextInt();
-			new Ghost(gCoins, gEquality, gMammals, gCats);
+			player1.setUserCat(cats);
+			int games = inputFile.nextInt();
+			player1.setUserGames(games);
+			String gname = inputFile.nextLine();
+			ghost.setUserName(gname);
+			int gcoins = inputFile.nextInt();
+			ghost.setUserCoins(gcoins);
+			int gequality = inputFile.nextInt();
+			ghost.setUserEQ(gequality);
+			int gmammals = inputFile.nextInt();
+			ghost.setUserMam(gmammals);
+			int gcats = inputFile.nextInt();
+			ghost.setUserCat(gcats);
+			int ggames = inputFile.nextInt();
+			ghost.setUserGames(ggames);
 			
 		}
 		

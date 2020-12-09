@@ -15,19 +15,21 @@ public class HellStrings {
 			+ "Those commands are, respectively, 'save', 'quit', 'restart', 'inventory' and 'help'. Why don't you try opening your inventory?\n";
 	final static String WHERETONOW = "There are four doors in front of you.\n"
 			+ "Door 1:\n"
-			+ "Door 2:\n"
-			+ "Door 3: This door is painted pink, with little rainbow slashes all over it. "
+			+ "Door 2: This door is made of deep red cedar, with inset panals hand-carved into it.\n"
+			+ "There's no door knob; the door is instead hung on a rolling track with an inset metal disk where the handle would be.\n"
+			+ "When you bend down to take a look, you find that it is ornately worked copper in a Missisipean design.\n";
+	final static String WHERETONOW2 = "Door 3: This door is painted pink, with little rainbow slashes all over it. "
 			+ "From a certain angle, it looks kind of like a Pop-tart.\n"
-			+ "The handle is a silver curl, like an unwinding ball of yarn, and extends half the door's width. "
-			+ "Weird.\n"
+			+ "The handle is a silver curl, like an unwinding ball of yarn, and extends half the door's width. Weird.\n"
 			+ "Door 4:\n" //EVERYONE DESCRIBE YOUR DOORS
 			+ "\nWhich Door would you like to enter? [1-4]\n";
 	final static String HELP = "\nHere are some things you can do:\nsave\nquit\nrestart\ninventory\nroom\ntrivia\nif you want to examine something, try typing it's name. "; 
 								//^make sure this is ubiquitious for all situations
 			
-			
+	
+	//introduce the game through a series of repeatable blocks
 	public static void getGameIntro() {
-		System.out.print("Hello, " + User.getUserName() + GAMEINTRO1);
+		System.out.print(GAMEINTRO1);
 		scnr.nextLine();
 		System.out.print(GAMEINTRO2);
 	}
@@ -41,6 +43,7 @@ public class HellStrings {
 	public static void doorMenu() {
 		System.out.print(WHERETONOW);
 		scnr.nextLine();
+		System.out.print(WHERETONOW2);
 	}
 	
 	
