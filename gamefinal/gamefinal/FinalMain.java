@@ -100,9 +100,27 @@ public class FinalMain {
 	}
 
 	public static int triviaIntro(int triviaRoom) throws FileNotFoundException{
-		System.out.println("this is a test" + triviaRoom); //testing to see if triviaRoom was sent over properly
 		Trivia.triviaMethod(triviaRoom);
 		return triviaRoom;
+	}
+	
+	public static void triviaScore(int triviaRoom) {
+		if (triviaRoom == 1) {
+			int plusMam = player1.getMam() + 1;
+			player1.setUserMam(plusMam);
+		}
+		else if (triviaRoom == 2) {
+			int plusEQ = player1.getEQ() +1;
+			player1.setUserEQ(plusEQ);
+		}
+		else if (triviaRoom == 3) {
+			int plusCat = player1.getCat() + 1;
+			player1.setUserCat(plusCat);
+		}
+		else if (triviaRoom == 4) {
+			int plusGame = player1.getGames() +1;
+			player1.setUserGames(plusGame);
+		}
 	}
 	
 	//saves, quits, restarts, or displays inventory
