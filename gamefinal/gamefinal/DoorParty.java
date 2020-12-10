@@ -76,8 +76,23 @@ public class DoorParty {
 			FinalMain.saveMenu(userInput);
 			door2Interact(userInput);
 		}
-		else if (investigate.contains("trivia")) {
-			//CALL TRIVIA STUFF IN TRIVIA CLASS
+		else if (investigate.contains("trivia")) {//someone who is better at writing feel encouraged to make this sound better lol
+			System.out.println("You look up at the enormous machine before you. You go to touch it but before you get the chance to a large screen lights up with the words"
+			+"'I'm trivia machine wanna play? Y/N' displayed." );
+			userInput = scnr.nextLine();
+			//FinalMain.saveMenu(userInput);
+			if(userInput.contains("Y")){ 
+				FinalMain.triviaIntro(2); 
+				return; 
+			}else if(userInput.contains("N")){
+				System.out.println("You type N and the machine shuts off");
+				door2Interact(userInput);
+			}else{
+				System.out.println("You type '" + userInput + "' the machine makes a loud noise and the word ERROR is output to the screen"); 
+				door2Interact(investigate);
+
+			}
+
 		}
 		else if (investigate.contains("exit")) {
 			System.out.println("\nYou leave the room.\n");

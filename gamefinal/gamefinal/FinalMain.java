@@ -98,6 +98,12 @@ public class FinalMain {
 		String doorAgain = scnr.nextLine();
 		doorLoop(doorAgain);
 	}
+
+	public static int triviaIntro(int triviaRoom) throws FileNotFoundException{
+		System.out.println("this is a test" + triviaRoom); //testing to see if triviaRoom was sent over properly
+		Trivia.triviaMethod(triviaRoom);
+		return triviaRoom;
+	}
 	
 	//saves, quits, restarts, or displays inventory
 	public static void saveMenu(String saveChoice) throws FileNotFoundException {
