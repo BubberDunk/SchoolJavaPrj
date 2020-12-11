@@ -297,7 +297,6 @@ public class Trivia {
    	Scanner scnr = new Scanner(System.in);
 	int q;
 	String userInput;
-	//add flavor text for trivia machine and a y/n for if they want to doo
 	System.out.println("Good! Let's begin, then.");
 	for(q = 0; q <= 9; q++){
 		System.out.println(questions[triviaRoom - 1][q]);
@@ -308,6 +307,7 @@ public class Trivia {
 		}else{
 			System.out.println("incorrect :<");
 		}
+
 	}
 	
 	scnr.close();

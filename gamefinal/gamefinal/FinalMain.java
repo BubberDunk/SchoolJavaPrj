@@ -22,7 +22,7 @@ public class FinalMain {
 		String userInput = scnr.nextLine();
 		
 		if (userInput.compareToIgnoreCase("no") == 0) {
-			System.out.println("What is your name?");
+			System.out.println("What is the name of your previous save?");
 			userInput = scnr.nextLine();
 			loadGame(userInput);
 		}
@@ -133,6 +133,7 @@ public class FinalMain {
 		}
 		else if (saveChoice.compareToIgnoreCase("save") == 0) {
 			saveGame();
+			System.out.println("Your game has been saved " + player1.getUserName() + "!");
 		}
 		else if (saveChoice.compareToIgnoreCase("inventory") == 0) {
 			player1.getInventory();

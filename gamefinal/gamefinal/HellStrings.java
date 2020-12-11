@@ -21,7 +21,7 @@ public class HellStrings {
 	final static String WHERETONOW2 = "Door 3: This door is painted pink, with little rainbow slashes all over it. "
 			+ "From a certain angle, it looks kind of like a Pop-tart.\n"
 			+ "The handle is a silver curl, like an unwinding ball of yarn, and extends half the door's width. Weird.\n"
-			+ "Door 4:\n" //EVERYONE DESCRIBE YOUR DOORS
+			+ "Door 4:This door appears to be made out of...cardboard? Yes it looks like the top of a cardboard box, with two flaps taped together, sealing the enterance\n"; //EVERYONE DESCRIBE YOUR DOORS
 			+ "\nWhich Door would you like to enter? [1-4]\n";
 	final static String HELP = "\nHere are some things you can do:\nsave\nquit\nrestart\ninventory\nroom\ntrivia\nif you want to examine something, try typing it's name. "; 
 								//^make sure this is ubiquitious for all situations
@@ -32,6 +32,7 @@ public class HellStrings {
 		System.out.print(GAMEINTRO1);
 		scnr.nextLine();
 		System.out.print(GAMEINTRO2);
+
 	}
 	
 	public static void getJokes() {

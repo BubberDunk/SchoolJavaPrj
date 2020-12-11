@@ -1,5 +1,6 @@
 package gamefinal;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
@@ -23,8 +24,10 @@ public class DoorParty {
 			+ "In the center of the room, there's a round, blue kiddy POOL full of cat-shaped beanbags.\n"
 			+ "To your right, there's a HOLE disappearing into the shag carpet. The interior of the hole also appears to be carpeted.\n"
 			+ "And, of course, there's the TRIVIA machine."; 
-	final static String DOOR4PARTY = ""; //fill these in in the template of door3
-	final static String DOOR4ITEMS = "";
+	final static String DOOR4PARTY = "\nYou find a place where the tape is coming off and rip at it. Inside you're met with what appears to be some type of game room " //fill these in in the template of door3
+			+ "\n. It's actually quite nice, the walls are covered in an ornate wallpaper and the low lighting creates a comfortable atmosphere. ";
+	final static String DOOR4ITEMS = "In the middle of the room there appears to be a table with a BOARD GAME sitting on top. to your left, a SHELF filled to max capacity with"
+			+ "games you haven't heard of. to your right, there are several ARCADE cabinets lined up. There are several decroations adorning the WALLS";
 	final static String ITEMPROMPT = "\nSeveral items catch your attention:\n";
 	final static String ITEMINTERACT = "\nDo you want to look at anything? Type help to pull up a list of things you can do.\n";
 	
@@ -210,6 +213,84 @@ public class DoorParty {
 		door3Interact(userInput);
 	}
 	
+	public static void door4Interact(String investigate) throws FileNotFoundException{
+		String userInput;
+
+		if (investigate.contains("board game")) {
+			System.out.println("\n On the table sits a board game called 'Apologies.' It looks like whoever was playing it left in a rush");
+			System.out.println(ITEMINTERACT);
+			userInput = scnr.nextLine();
+			FinalMain.saveMenu(userInput);
+			door4Interact(userInput);
+		}
+		else if (investigate.contains("shelf")) {
+			System.out.println(" \n"
+					+ "");
+			System.out.println(ITEMINTERACT);
+			userInput = scnr.nextLine();
+			FinalMain.saveMenu(userInput);
+			door4Interact(userInput);
+		}
+		else if (investigate.contains("")) {
+			System.out.println("\n");
+			System.out.println(ITEMINTERACT);
+			userInput = scnr.nextLine();
+			FinalMain.saveMenu(userInput);
+			door2Interact(userInput);
+		}
+		else if (investigate.contains("trivia")) {//someone who is better at writing feel encouraged to make this sound better lol
+			System.out.println("You look up at the enormous machine before you. You go to touch it but before you get the chance to a large screen lights up with the words:"
+			+"\n'I'm trivia machine: wanna play? Y/N' displayed." );
+			userInput = scnr.nextLine();
+			FinalMain.saveMenu(userInput);
+			userInput.toLowerCase();
+			if(userInput.contains("y")){ 
+				FinalMain.triviaIntro(4); 
+				return; 
+			}else if(userInput.contains("n")){
+				System.out.println("You type N and the machine shuts off");
+				userInput = scnr.nextLine();
+				FinalMain.saveMenu(userInput);
+				door2Interact(userInput);
+			}else{
+				System.out.println("You type '" + userInput + "' the machine makes a loud noise and the word ERROR is output to the screen"); 
+				door2Interact(investigate);
+			}
+
+		}
+		else if (investigate.contains("exit")) {
+			System.out.println("\nYou leave the room.\n");
+			FinalMain.doorIntro();
+		}
+		else if (investigate.contains("room")) {
+			System.out.println("\nHuh? Do you need me to describe the room AGAIN??");
+			userInput = scnr.nextLine();
+			FinalMain.saveMenu(userInput);
+			
+			if (userInput.charAt(0) == 'y') {
+				System.out.println("\nOkay... be sure to listen this time.");
+				door2Cycle();
+			}
+			else{
+				System.out.println("\nWell, well. SOMEbody is indecisive today aren't they...\n");
+				userInput = scnr.nextLine();
+				door2Interact(userInput);	
+			}
+		}
+		else if (investigate.contains("help") || investigate.contains("inventory") || investigate.contains("save") || investigate.contains("restart") || investigate.contains("quit")) {
+			userInput = scnr.nextLine();
+			FinalMain.saveMenu(userInput);
+			door2Interact(userInput);
+		}
+		else {
+			System.out.println("\nI didn't understand that (remember enter 'help' to bring up a list of things you can do)");
+			userInput = scnr.nextLine();
+			FinalMain.saveMenu(userInput);
+			door2Interact(userInput);
+			}
+	}
+
+	}
 	public DoorParty() {
 	//doorparty initialized
 	}
