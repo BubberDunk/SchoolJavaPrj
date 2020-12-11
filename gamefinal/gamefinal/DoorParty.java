@@ -1,6 +1,5 @@
 package gamefinal;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
@@ -86,8 +85,11 @@ public class DoorParty {
 			FinalMain.saveMenu(userInput);
 			userInput.toLowerCase();
 			if(userInput.contains("y")){ 
-				FinalMain.triviaIntro(2); 
-				return; 
+				FinalMain.roomCheck(2);
+				System.out.println("\nYou take a step back and survey the room.");
+				userInput = scnr.nextLine();
+				FinalMain.saveMenu(userInput);
+				door2Interact(userInput);
 			}else if(userInput.contains("n")){
 				System.out.println("You type N and the machine shuts off");
 				userInput = scnr.nextLine();
@@ -168,7 +170,26 @@ public class DoorParty {
 			door3Interact(userInput);
 		}
 		else if (investigate.contains("trivia")) {
-			//CALL TRIVIA STUFF IN TRIVIA CLASS
+			System.out.println("You look up at the enormous machine before you. You go to touch it but before you get the chance to a large screen lights up with the words:"
+				+"\n'I'm trivia machine: wanna play? Y/N' displayed." );
+			userInput = scnr.nextLine();
+			FinalMain.saveMenu(userInput);
+			userInput.toLowerCase();
+			if(userInput.contains("y")){ 
+				FinalMain.roomCheck(3);
+				System.out.println("\nYou take a step back and survey the room.");
+				userInput = scnr.nextLine();
+				FinalMain.saveMenu(userInput);
+				door3Interact(userInput);
+			}else if(userInput.contains("n")){
+				System.out.println("You type N and the machine shuts off");
+				userInput = scnr.nextLine();
+				FinalMain.saveMenu(userInput);
+				door3Interact(userInput);
+			}else{
+				System.out.println("You type '" + userInput + "' the machine makes a loud noise and the word ERROR is output to the screen"); 
+				door3Interact(investigate);
+			}
 		}
 
 		else if (investigate.contains("exit")) {

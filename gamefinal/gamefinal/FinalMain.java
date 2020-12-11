@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class FinalMain {
 	static Scanner scnr = new Scanner(System.in);
 	static User player1 = new User();
-	static User ghost = new User("opponent", 10, 0, 0, 0, 0);
+	static User ghost = new User("opponent", 10, 0, 0, 0, 0, false, false, false, false);
 	
 
 	public static void main(String[] args) throws FileNotFoundException {
@@ -57,38 +57,48 @@ public class FinalMain {
 	public static void doorIntro() throws FileNotFoundException {
 		String doorChoice;
 		HellStrings.doorMenu(); //allows for choice between the trivia doors
+		if ((player1.getRoom1() == true) && (player1.getRoom2() == true) && (player1.getRoom3() == true) && (player1.getRoom4() == true)) {
+			HellStrings.secretTunnel();
+		}
 		doorChoice = scnr.nextLine();
 		doorLoop(doorChoice);
 	}
 	
 	//branching menu allowing user to select a door or to fuck up and not select a door
 	public static void doorLoop(String doorChoice) throws FileNotFoundException {
-		if (doorChoice.isEmpty()) {
-			badChoice(); }
-		else {
-			char doorChar = doorChoice.charAt(0);
-			if (doorChar == '1') {
-			//door1 trivia zone
-			}
-			else if (doorChar == '2') {
-				DoorParty.door2Intro();
-			}
-			else if (doorChar == '3')
-				try {
-					{	
-						//door3 trivia zone
-						DoorParty.door3Intro();
-					}
-				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			else if (doorChar == '4') {
-			//door4 trivia zone
+		if ((player1.getRoom1() == true) && (player1.getRoom2() == true) && (player1.getRoom3() == true) && (player1.getRoom4() == true)) {
+			if (doorChoice.contains("5")) {
+				//door5 stuff
 			}
 			else {
-				badChoice();
+				doorChoice(doorChoice);
 			}
+		}
+		else {
+			if (doorChoice.isEmpty()) {
+				badChoice(); }
+			else {
+				doorChoice(doorChoice);
+			}
+		}
+	}
+	
+	//regular door selection loop.
+	public static void doorChoice(String doorChoice) throws FileNotFoundException {
+		if (doorChoice.contains("1")) {
+			//door1 zone
+		}
+		else if (doorChoice.contains("2")) {
+			DoorParty.door2Intro();
+		}
+		else if (doorChoice.contains("3")) {
+			DoorParty.door3Intro();
+		}
+		else if (doorChoice.contains("4")) {
+			//door4 zone
+		}
+		else {
+			badChoice();
 		}
 	}
 	
@@ -98,9 +108,46 @@ public class FinalMain {
 		String doorAgain = scnr.nextLine();
 		doorLoop(doorAgain);
 	}
+	
+	//tells you if you're allowed to run this trivia
+	public static void roomCheck(int triviaRoom) throws FileNotFoundException {
+		if (triviaRoom == 1) {
+			if (player1.getRoom1() == false) {
+				triviaIntro(triviaRoom);
+			}
+			else {
+				HellStrings.bouncer();
+			}
+		}
+		else if(triviaRoom == 2) {
+			 if (player1.getRoom2() == false) {
+				 triviaIntro(triviaRoom);
+			 }
+			 else {
+				HellStrings.bouncer();
+				}
+		}
+		else if(triviaRoom == 3) {
+			if (player1.getRoom3() == false) {
+				 triviaIntro(triviaRoom);
+			 }
+			else {
+				HellStrings.bouncer();
+			}
+		}
+		else if(triviaRoom == 4) {
+			if (player1.getRoom4() == false) {
+				 triviaIntro(triviaRoom);
+			 }
+			else {
+				HellStrings.bouncer();
+			}
+		}
+	}
 
 	public static int triviaIntro(int triviaRoom) throws FileNotFoundException{
 		Trivia.triviaMethod(triviaRoom);
+		player1.closeRooms(triviaRoom);
 		return triviaRoom;
 	}
 	
@@ -120,6 +167,23 @@ public class FinalMain {
 		else if (triviaRoom == 4) {
 			int plusGame = player1.getGames() +1;
 			player1.setUserGames(plusGame);
+		}
+	}
+	
+	//trivia machine output
+	public static void postTrivia (int triviaRoom) {
+		System.out.print("\nGreat work! Your final score for ");
+		if (triviaRoom == 1) {
+			System.out.print("mammal questions was: " + player1.getMam() + "/10.\nYou have: " + player1.getCoins() + " coins.");
+		}
+		else if (triviaRoom == 2) {
+			System.out.print("equity questions was: " + player1.getEQ() + "/10.\nYou have: " + player1.getCoins() + " coins.");
+		}
+		else if (triviaRoom == 3) {
+			System.out.print("equity questions was: " + player1.getCat() + "/10.\nYou have: " + player1.getCoins() + " coins.");
+		}
+		else if (triviaRoom == 4) {
+			System.out.print("equity questions was: " + player1.getGames() + "/10.\nYou have: " + player1.getCoins() + " coins.");
 		}
 	}
 	
@@ -162,11 +226,19 @@ public class FinalMain {
 		outputFile.println(player1.getMam());
 		outputFile.println(player1.getCat());
 		outputFile.println(player1.getGames());
+		outputFile.println(player1.getRoom1());
+		outputFile.println(player1.getRoom2());
+		outputFile.println(player1.getRoom3());
+		outputFile.println(player1.getRoom4());
 		outputFile.println(ghost.getCoins());
 		outputFile.println(ghost.getEQ());
 		outputFile.println(ghost.getMam());
 		outputFile.println(ghost.getCat());
 		outputFile.println(ghost.getGames());
+		outputFile.println(ghost.getRoom1());
+		outputFile.println(ghost.getRoom2());
+		outputFile.println(ghost.getRoom3());
+		outputFile.println(ghost.getRoom4());
 		
 		outputFile.close();
 	}
@@ -189,6 +261,22 @@ public class FinalMain {
 			player1.setUserCat(cats);
 			int games = inputFile.nextInt();
 			player1.setUserGames(games);
+			boolean room1 = inputFile.nextBoolean();
+			if (room1 == true) {
+				player1.closeRooms(1);
+			}
+			boolean room2 = inputFile.nextBoolean();
+			if (room2 == true) {
+				player1.closeRooms(2);
+			}
+			boolean room3 = inputFile.nextBoolean();
+			if (room3 == true) {
+				player1.closeRooms(3);
+			}
+			boolean room4 = inputFile.nextBoolean();
+			if (room4 == true) {
+				player1.closeRooms(4);
+			}
 			String gname = inputFile.nextLine();
 			ghost.setUserName(gname);
 			int gcoins = inputFile.nextInt();
@@ -201,6 +289,22 @@ public class FinalMain {
 			ghost.setUserCat(gcats);
 			int ggames = inputFile.nextInt();
 			ghost.setUserGames(ggames);
+			boolean groom1 = inputFile.nextBoolean();
+			if (groom1 == true) {
+				ghost.closeRooms(1);
+			}
+			boolean groom2 = inputFile.nextBoolean();
+			if (groom2 == true) {
+				ghost.closeRooms(2);
+			}
+			boolean groom3 = inputFile.nextBoolean();
+			if (groom3 == true) {
+				ghost.closeRooms(3);
+			}
+			boolean groom4 = inputFile.nextBoolean();
+			if (groom4 == true) {
+				ghost.closeRooms(4);
+			}
 			
 		}
 		

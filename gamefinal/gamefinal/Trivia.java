@@ -307,10 +307,8 @@ public class Trivia {
 		}else{
 			System.out.println("incorrect :<");
 		}
-
 	}
-	
-	scnr.close();
+	FinalMain.postTrivia(triviaRoom);
    	 
 		
 	}

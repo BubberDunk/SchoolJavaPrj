@@ -23,7 +23,12 @@ public class HellStrings {
 			+ "The handle is a silver curl, like an unwinding ball of yarn, and extends half the door's width. Weird.\n"
 			+ "Door 4:This door appears to be made out of...cardboard? Yes it looks like the top of a cardboard box, with two flaps taped together, sealing the enterance\n"; //EVERYONE DESCRIBE YOUR DOORS
 			+ "\nWhich Door would you like to enter? [1-4]\n";
-	final static String HELP = "\nHere are some things you can do:\nsave\nquit\nrestart\ninventory\nroom\ntrivia\nif you want to examine something, try typing it's name. "; 
+	final static String BOUNCER = "The screen fills with an enormous red 'X', an unpleasant blare sounding. Words flash overtop the X:"
+			+ "\nNO REPEATS";
+	final static String SECRETTUNNEL = "Wait, what's this? As you survey the other doors, trying to decide which one to return to (and presumably wait to die, you haven't noticed an exit),"
+			+ "\nyou realize there's a fifth door, set into a different wall than the other four. How did you fail to see that before? You could swear you looked all around this place."
+			+ "\nThis door is shimmering faintly, and there is a ring of stars inset at the top. Might as well try DOOR 5.";
+	final static String HELP = "\nHere are some things you can do:\nsave\nquit\nrestart\ninventory\nif you want to examine something, try typing it's name. "; 
 								//^make sure this is ubiquitious for all situations
 			
 	
@@ -32,7 +37,6 @@ public class HellStrings {
 		System.out.print(GAMEINTRO1);
 		scnr.nextLine();
 		System.out.print(GAMEINTRO2);
-
 	}
 	
 	public static void getJokes() {
@@ -45,6 +49,14 @@ public class HellStrings {
 		System.out.print(WHERETONOW);
 		scnr.nextLine();
 		System.out.print(WHERETONOW2);
+	}
+	
+	public static void bouncer() {
+		System.out.print(BOUNCER);
+	}
+	
+	public static void secretTunnel() {
+		System.out.print(SECRETTUNNEL);
 	}
 	
 	

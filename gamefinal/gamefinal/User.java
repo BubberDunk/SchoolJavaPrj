@@ -12,6 +12,10 @@ public class User {
 	private static int userMamScore;
 	private static int userCatScore;
 	private static int userGameScore;
+	private static boolean closeRoom1;
+	private static boolean closeRoom2;
+	private static boolean closeRoom3;
+	private static boolean closeRoom4;
 	
 	
 	public User() {
@@ -21,16 +25,24 @@ public class User {
 		userMamScore = -1;
 		userCatScore = -1;
 		userGameScore = -1;
-		
+		closeRoom1 = false;
+		closeRoom2 = false;
+		closeRoom3 = false;
+		closeRoom4 = false;
 	}
 	
-	public User(String name, int money, int equality, int mammals, int felines, int games) {
+	public User(String name, int money, int equality, int mammals, int felines, int games, boolean room1, boolean room2, boolean room3, boolean room4) {
 		userName = name;
 		userCoins = money;
 		userEqScore = equality;
 		userMamScore = mammals;
 		userCatScore = felines;
 		userGameScore = games;
+		closeRoom1 = room1;
+		closeRoom2 = room2;
+		closeRoom3 = room3;
+		closeRoom4 = room4;
+		
 	}
 	
 	public void setUserName(String name) {
@@ -55,6 +67,22 @@ public class User {
 	
 	public void setUserGames(int games) {
 		userGameScore = games;
+	}
+	
+	//closes trivia rooms after trivia is done
+	public void closeRooms(int triviaRoom) {
+		if (triviaRoom == 1) {
+			closeRoom1 = true;
+		}
+		else if(triviaRoom == 2) {
+			closeRoom2 = true;
+		}
+		else if(triviaRoom == 3) {
+			closeRoom3 = true;
+		}
+		else if(triviaRoom == 4) {
+			closeRoom4 = true;
+		}
 	}
 	
 	public void getInventory() throws FileNotFoundException {
@@ -97,4 +125,19 @@ public class User {
 		//report out correct cat answers out of total questions
 		return userGameScore;
 	}
+	
+	//reports status of trivia rooms being open or not
+	public boolean getRoom1() {
+		return closeRoom1;
+	}
+	public boolean getRoom2() {
+		return closeRoom2;
+	}
+	public boolean getRoom3() {
+		return closeRoom3;
+	}
+	public boolean getRoom4() {
+		return closeRoom4;
+	}
+
 }
