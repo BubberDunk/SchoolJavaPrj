@@ -311,7 +311,6 @@ public class DoorParty {
 			}
 	}
 
-	}
 	public DoorParty() {
 	//doorparty initialized
 	}
