@@ -49,7 +49,7 @@ public class User {
 		userName = name;
 	}
 	
-	public void setUserCoins(int money) {
+	public static void setUserCoins(int money) {
 		userCoins = money;
 	}
 	
@@ -108,7 +108,7 @@ public class User {
 		return userName;
 	}
 	
-	public int getCoins() {
+	public static int getCoins() {
 		//report out current number of coins in inventory
 		return userCoins;
 	}

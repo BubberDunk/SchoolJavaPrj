@@ -1,6 +1,7 @@
 package gamefinal;
 
 import java.io.FileNotFoundException;
+import java.sql.SQLFeatureNotSupportedException;
 import java.util.Scanner;
 
 public class Trivia {
@@ -297,13 +298,19 @@ public class Trivia {
    	Scanner scnr = new Scanner(System.in);
 	int q;
 	String userInput;
+	int bet;
+	//add flavor text for trivia machine and a y/n for if they want to doo
 	System.out.println("Good! Let's begin, then.");
 	for(q = 0; q <= 9; q++){
 		System.out.println(questions[triviaRoom - 1][q]);
 		userInput = scnr.nextLine();
+		System.out.println("How much coin would you like to put on your answer?");
+		bet = scnr.nextInt();	
 		if(userInput.contains(answers[triviaRoom - 1][q])){
 			FinalMain.triviaScore(triviaRoom);
-			System.out.println("Correct!");
+			User.setUserCoins(bet + User.getCoins());
+			System.out.println("Correct!\nYour new coin total is " + User.getCoins() + " coins");
+				
 		}else{
 			System.out.println("incorrect :<");
 		}
