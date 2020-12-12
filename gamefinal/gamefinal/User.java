@@ -85,6 +85,13 @@ public class User {
 		}
 	}
 	
+	public void openRooms() {
+		closeRoom1 = false;
+		closeRoom2 = false;
+		closeRoom3 = false;
+		closeRoom4 = false;
+	}
+	
 	public void getInventory() throws FileNotFoundException {
 		System.out.print(userName.toUpperCase());
 		System.out.println("'S INVENTORY");

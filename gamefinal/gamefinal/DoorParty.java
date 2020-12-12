@@ -62,7 +62,7 @@ public class DoorParty {
 			door2Interact(userInput);
 		}
 		else if (investigate.contains("flag")) {
-			System.out.println("\nYou go to the wall and look at the flag. It'a s rainbow, but there are a black and brown line on top of it.\n"
+			System.out.println("\nYou go to the wall and look at the flag. It's a rainbow, but there are a black and brown lines on top of it.\n"
 					+ "Inset on the left is a triangle in pink, blue, and white. You're glad everyone is being included.");
 			System.out.println(ITEMINTERACT);
 			userInput = scnr.nextLine();

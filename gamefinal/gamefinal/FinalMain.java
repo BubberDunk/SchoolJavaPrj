@@ -8,10 +8,14 @@ import java.util.Scanner;
 public class FinalMain {
 	static Scanner scnr = new Scanner(System.in);
 	static User player1 = new User();
-	static User ghost = new User("opponent", 10, 0, 0, 0, 0, false, false, false, false);
 	
 
 	public static void main(String[] args) throws FileNotFoundException {
+		theGame();
+	}
+	
+	//'title screen'
+	public static void theGame() throws FileNotFoundException {
 		gameStart();
 		doorIntro();
 	}
@@ -61,6 +65,7 @@ public class FinalMain {
 			HellStrings.secretTunnel();
 		}
 		doorChoice = scnr.nextLine();
+		saveMenu(doorChoice);
 		doorLoop(doorChoice);
 	}
 	
@@ -203,6 +208,23 @@ public class FinalMain {
 			player1.getInventory();
 		}
 		else if (saveChoice.compareToIgnoreCase("restart") == 0) {
+			System.out.println("\nAre you SURE? This is permanent...");
+			String userInput = scnr.nextLine();
+			userInput = userInput.toLowerCase();
+			if (userInput.contains("yes")) {
+				System.out.println("\nOkay... see you on the flip side.\n");
+				player1.setUserName("null");
+				player1.setUserCoins(10);
+				player1.setUserCat(0);
+				player1.setUserEQ(0);
+				player1.setUserGames(0);
+				player1.setUserMam(0);
+				player1.openRooms();
+				theGame();
+			}
+			else {
+				System.out.println("\nHaha, close call! Don't be so reckless next time.");
+			}
 			
 		}
 		else if(saveChoice.compareToIgnoreCase("help") == 0) {
@@ -230,15 +252,6 @@ public class FinalMain {
 		outputFile.println(player1.getRoom2());
 		outputFile.println(player1.getRoom3());
 		outputFile.println(player1.getRoom4());
-		outputFile.println(ghost.getCoins());
-		outputFile.println(ghost.getEQ());
-		outputFile.println(ghost.getMam());
-		outputFile.println(ghost.getCat());
-		outputFile.println(ghost.getGames());
-		outputFile.println(ghost.getRoom1());
-		outputFile.println(ghost.getRoom2());
-		outputFile.println(ghost.getRoom3());
-		outputFile.println(ghost.getRoom4());
 		
 		outputFile.close();
 	}
@@ -277,35 +290,6 @@ public class FinalMain {
 			if (room4 == true) {
 				player1.closeRooms(4);
 			}
-			String gname = inputFile.nextLine();
-			ghost.setUserName(gname);
-			int gcoins = inputFile.nextInt();
-			ghost.setUserCoins(gcoins);
-			int gequality = inputFile.nextInt();
-			ghost.setUserEQ(gequality);
-			int gmammals = inputFile.nextInt();
-			ghost.setUserMam(gmammals);
-			int gcats = inputFile.nextInt();
-			ghost.setUserCat(gcats);
-			int ggames = inputFile.nextInt();
-			ghost.setUserGames(ggames);
-			boolean groom1 = inputFile.nextBoolean();
-			if (groom1 == true) {
-				ghost.closeRooms(1);
-			}
-			boolean groom2 = inputFile.nextBoolean();
-			if (groom2 == true) {
-				ghost.closeRooms(2);
-			}
-			boolean groom3 = inputFile.nextBoolean();
-			if (groom3 == true) {
-				ghost.closeRooms(3);
-			}
-			boolean groom4 = inputFile.nextBoolean();
-			if (groom4 == true) {
-				ghost.closeRooms(4);
-			}
-			
 		}
 		
 		inputFile.close();
