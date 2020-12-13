@@ -20,11 +20,11 @@ public class User {
 	
 	public User() {
 		userName = "No one";
-		userCoins = -1;
-		userEqScore = -1;
-		userMamScore = -1;
-		userCatScore = -1;
-		userGameScore = -1;
+		userCoins = 10;
+		userEqScore = 0;
+		userMamScore = 0;
+		userCatScore = 0;
+		userGameScore = 0;
 		closeRoom1 = false;
 		closeRoom2 = false;
 		closeRoom3 = false;
@@ -102,6 +102,18 @@ public class User {
 		System.out.println("Mammal Questions Correct: " + userMamScore + "/10");
 		String userInput = scnr.nextLine();
 		FinalMain.saveMenu(userInput);
+	}
+	
+	public static void getFinalAct() throws FileNotFoundException { // sends data to be displayed in endgame
+		System.out.print(userName.toUpperCase());
+		System.out.println(" it's OVER for you, \nGAMBLER!");
+		System.out.println("final Monetary value: " + userCoins + " coins");
+		System.out.println("scores\nEquity: " + userEqScore + "/10");
+		System.out.println("Feline: " + userCatScore + "/10");
+		System.out.println("Game: " + userGameScore + "/10");
+		System.out.println("Mammal: " + userMamScore + "/10");
+		int userAvgScore = (int) Math.ceil((userEqScore + userMamScore + userCatScore + userGameScore)/4);
+		System.out.println("Average score: " + userAvgScore);
 	}
 	
 	public String getUserName() {

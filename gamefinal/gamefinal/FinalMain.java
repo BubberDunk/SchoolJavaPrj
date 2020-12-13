@@ -22,16 +22,24 @@ public class FinalMain {
 	
 	//loads or starts the game
 	public static void gameStart() throws FileNotFoundException {
-		System.out.println("Welcome to the game! Are you new here?");
+		System.out.println("Welcome to the game! Please enter a command:");
+		System.out.print("\n|New|  ");
+		System.out.print("|Load|  ");
+		System.out.println("|Quit|");
 		String userInput = scnr.nextLine();
+		userInput.toLowerCase();
 		
-		if (userInput.compareToIgnoreCase("no") == 0) {
-			System.out.println("What is the name of your previous save?");
+		if (userInput.contains("load")) {
+			System.out.println("What is your name?");
 			userInput = scnr.nextLine();
 			loadGame(userInput);
 		}
 		
-		else {
+		else if (userInput.contains("quit")) {
+			System.exit(0);
+		}
+		
+		else if (userInput.contains("new")){
 			//this part is just the beginning of the game
 			userIntro(); //prompts for user name
 			System.out.print("Hello, " + player1.getUserName());
@@ -45,6 +53,11 @@ public class FinalMain {
 			userInput = scnr.nextLine();
 			saveMenu(userInput);
 			
+		}
+		
+		else {
+			System.out.println("\nYou can't do that yet! Try something else.");
+			gameStart();
 		}
 	}
 	
@@ -73,7 +86,7 @@ public class FinalMain {
 	public static void doorLoop(String doorChoice) throws FileNotFoundException {
 		if ((player1.getRoom1() == true) && (player1.getRoom2() == true) && (player1.getRoom3() == true) && (player1.getRoom4() == true)) {
 			if (doorChoice.contains("5")) {
-				//door5 stuff
+				Endgame.EndScreen();
 			}
 			else {
 				doorChoice(doorChoice);
@@ -91,7 +104,7 @@ public class FinalMain {
 	//regular door selection loop.
 	public static void doorChoice(String doorChoice) throws FileNotFoundException {
 		if (doorChoice.contains("1")) {
-			//door1 zone
+			DoorParty.door1Intro();
 		}
 		else if (doorChoice.contains("2")) {
 			DoorParty.door2Intro();
@@ -202,7 +215,7 @@ public class FinalMain {
 		}
 		else if (saveChoice.compareToIgnoreCase("save") == 0) {
 			saveGame();
-			System.out.println("Your game has been saved " + player1.getUserName() + "!");
+			System.out.println("Game saved!");
 		}
 		else if (saveChoice.compareToIgnoreCase("inventory") == 0) {
 			player1.getInventory();
@@ -230,10 +243,8 @@ public class FinalMain {
 		else if(saveChoice.compareToIgnoreCase("help") == 0) {
 			System.out.println(HellStrings.HELP);
 		}
-		else {
-			return;
-		}
 	}
+	
 	
 	public static void saveGame() throws FileNotFoundException
 	{

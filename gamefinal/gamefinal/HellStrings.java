@@ -14,14 +14,14 @@ public class HellStrings {
 	final static String HOWTOPLAY = "At any time you're prompted to give input, you can SAVE your game, QUIT your game, RESTART your game, see your INVENTORY or get HELP\n"
 			+ "Those commands are, respectively, 'save', 'quit', 'restart', 'inventory' and 'help'. Why don't you try opening your inventory?\n";
 	final static String WHERETONOW = "There are four doors in front of you.\n"
-			+ "Door 1:\n"
+			+ "Door 1:This door is made of that texture that you really dont like.\n You feel the urge to run.\n"
 			+ "Door 2: This door is made of deep red cedar, with inset panals hand-carved into it.\n"
 			+ "There's no door knob; the door is instead hung on a rolling track with an inset metal disk where the handle would be.\n"
 			+ "When you bend down to take a look, you find that it is ornately worked copper in a Missisipean design.\n";
 	final static String WHERETONOW2 = "Door 3: This door is painted pink, with little rainbow slashes all over it. "
 			+ "From a certain angle, it looks kind of like a Pop-tart.\n"
 			+ "The handle is a silver curl, like an unwinding ball of yarn, and extends half the door's width. Weird.\n"
-			+ "Door 4:This door appears to be made out of...cardboard? Yes it looks like the top of a cardboard box, with two flaps taped together, sealing the enterance\n" //EVERYONE DESCRIBE YOUR DOORS
+			+ "Door 4: "
 			+ "\nWhich Door would you like to enter? [1-4]\n";
 	final static String BOUNCER = "The screen fills with an enormous red 'X', an unpleasant blare sounding. Words flash overtop the X:"
 			+ "\nNO REPEATS";
