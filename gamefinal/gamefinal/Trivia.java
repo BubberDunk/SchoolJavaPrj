@@ -308,10 +308,11 @@ public class Trivia {
 		bet = scnr.nextInt();	
 		if(userInput.contains(answers[triviaRoom - 1][q])){
 			FinalMain.triviaScore(triviaRoom);
-			User.setUserCoins(bet + User.getCoins());
-			System.out.println("Correct!\nYour new coin total is " + User.getCoins() + " coins");
+			//add bet to coin total
+			System.out.println("Correct!\nYour new coin total is "  + " coins");
 				
 		}else{
+			//subtract bet from coin total
 			System.out.println("incorrect :<");
 		}
 	}
