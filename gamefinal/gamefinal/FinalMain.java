@@ -113,7 +113,7 @@ public class FinalMain {
 			DoorParty.door3Intro();
 		}
 		else if (doorChoice.contains("4")) {
-			//door4 zone
+			DoorParty.door4Intro();
 		}
 		else {
 			badChoice();

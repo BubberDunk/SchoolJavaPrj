@@ -21,7 +21,7 @@ public class HellStrings {
 	final static String WHERETONOW2 = "Door 3: This door is painted pink, with little rainbow slashes all over it. "
 			+ "From a certain angle, it looks kind of like a Pop-tart.\n"
 			+ "The handle is a silver curl, like an unwinding ball of yarn, and extends half the door's width. Weird.\n"
-			+ "Door 4: "
+			+ "Door 4:This door appears to be made out of...cardboard? Yes it looks like the top of a cardboard box, with two flaps taped together, sealing the enterance\n"
 			+ "\nWhich Door would you like to enter? [1-4]\n";
 	final static String BOUNCER = "The screen fills with an enormous red 'X', an unpleasant blare sounding. Words flash overtop the X:"
 			+ "\nNO REPEATS";
