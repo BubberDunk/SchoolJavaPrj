@@ -8,6 +8,7 @@ public class User {
 	static Scanner scnr = new Scanner(System.in);
 	private static String userName;
 	private static int userCoins;
+	private static int modCoins;
 	private static int userEqScore;
 	private static int userMamScore;
 	private static int userCatScore;
@@ -124,6 +125,19 @@ public class User {
 		//report out current number of coins in inventory
 		return userCoins;
 	}
+	
+	public static int addCoins(int modCoins) throws FileNotFoundException {
+		userCoins += modCoins;
+		System.out.println("Your new coin value is " + userCoins + " coins!");
+		return userCoins;
+	}
+	
+	public static int subCoins(int modCoins){
+		userCoins -= modCoins;
+		System.out.println("Your new coin value is " + userCoins + " coins!");
+		return userCoins;
+	}
+
 	
 	public int getEQ() {
 		//report out correct equity answers out of total questions

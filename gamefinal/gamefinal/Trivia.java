@@ -294,19 +294,26 @@ public class Trivia {
    	 					+ "\nd. Zelda: The Wand of Gamelon";
    	 answers[3][9] = "b";
    	 
-   	Scanner scnr = new Scanner(System.in);
+	Scanner scnr = new Scanner(System.in);
+	Scanner sc = new Scanner(System.in);
 	int q;
+	int modCoins;
 	String userInput;
-	//add flavor text for trivia machine and a y/n for if they want to doo
 	System.out.println("Good! Let's begin, then.");
 	for(q = 0; q <= 9; q++){
 		System.out.println(questions[triviaRoom - 1][q]);
+		System.out.println("Answer with a, b, c, or d");
 		userInput = scnr.nextLine();
+		System.out.println("how much coin would you like to put on your answer?");
+		modCoins = sc.nextInt();
 		if(userInput.contains(answers[triviaRoom - 1][q])){
+			System.out.println("Correct!\n");
 			FinalMain.triviaScore(triviaRoom);
-			System.out.println("Correct!");
+			User.addCoins(modCoins);
+			
 		}else{
-			System.out.println("incorrect :<");
+			System.out.println("Incorrect :< \n")
+			User.subCoins(modCoins);
 		}
 	}
 	FinalMain.postTrivia(triviaRoom);

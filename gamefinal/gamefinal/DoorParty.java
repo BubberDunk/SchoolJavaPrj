@@ -6,10 +6,10 @@ import java.util.Scanner;
 public class DoorParty {
 	static Scanner scnr = new Scanner(System.in);
 	static String userInput;
-	final static String DOOR4PARTY = "\nYou find a place where the tape is coming off and rip at it. Inside you're met with what appears to be some type of game room " //fill these in in the template of door3
-	+ "\n. It's actually quite nice, the walls are covered in an ornate wallpaper and the low lighting creates a comfortable atmosphere. ";
+	final static String DOOR4PARTY = "\nYou find a place where the tape is coming off and rip at it. Inside you're met with what appears to be some type of game room."
+	+ "\n It's actually quite cozy, the walls are covered in an ornate wallpaper and the low lighting creates a comfortable atmosphere. ";
 	final static String DOOR4ITEMS = "In the middle of the room there appears to be a table with a BOARD GAME sitting on top. to your left, a SHELF filled to max capacity with"
-	+ "games you haven't heard of. to your right, there are several ARCADE cabinets lined up. There are several decroations adorning the WALLS";
+	+ "games you haven't heard of. to your right, there are several ARCADE cabinets lined up.";
 	final static String DOOR2PARTY = "\nYou appreciate the craftsmanship which went into this door as you slide it open. Comfortable chairs around a circular table fill most of the room.\n"
 			+ "There are a variety of posters tacked onto the walls, three of which are a pleasant cream color, one of which has clearly been painted by many artists.\n"
 			+ "One corner of the room has been set up in a manner appropriate for children, with a changing station and toys spread across a small mat.\n";
@@ -38,7 +38,7 @@ public class DoorParty {
 	}
 	public static void door4Cycle() throws FileNotFoundException{
 		System.out.print(ITEMPROMPT);
-			System.out.print(DOOR2ITEMS);
+			System.out.print(DOOR4ITEMS);
 			scnr.nextLine();
 			System.out.print(ITEMINTERACT);
 			userInput = scnr.nextLine();
@@ -50,26 +50,27 @@ public class DoorParty {
 		String userInput;
 
 		if (investigate.contains("board game")) {
-			System.out.println("\n On the table sits a board game called 'Apologies.' It looks like whoever was playing it left in a rush");
+			System.out.println("\n On the table sits a board game called 'Apologies!' It looks like whoever was playing it left in a rush");
 			System.out.println(ITEMINTERACT);
 			userInput = scnr.nextLine();
 			FinalMain.saveMenu(userInput);
 			door4Interact(userInput);
 		}
 		else if (investigate.contains("shelf")) {
-			System.out.println(" \n"
-					+ "");
+			System.out.println("The shelves are packed tight with what looks like hundreds of board games, it has all the classics such as 'BattleTank' and 'Connect 128'  \n"
+					+ "oh and it even has the classic game of deduction 'Evidence'");
 			System.out.println(ITEMINTERACT);
 			userInput = scnr.nextLine();
 			FinalMain.saveMenu(userInput);
 			door4Interact(userInput);
 		}
-		else if (investigate.contains("")) {
-			System.out.println("\n");
+		else if (investigate.contains("arcade")){
+			System.out.println("There are several arcade cabinets, all flashing and beeping like a cacophony of digital chaos. There are a few you recognize, 'Pac-Person' and 'Pentris'\n");
 			System.out.println(ITEMINTERACT);
 			userInput = scnr.nextLine();
 			FinalMain.saveMenu(userInput);
-			door2Interact(userInput);
+			door4Interact(userInput);
+			
 		}
 		else if (investigate.contains("trivia")) {//someone who is better at writing feel encouraged to make this sound better lol
 			System.out.println("You look up at the enormous machine before you. You go to touch it but before you get the chance to a large screen lights up with the words:"
